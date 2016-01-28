@@ -40,7 +40,7 @@ public class NerdLauncherFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = super.onCreateView(inflater, container, savedInstanceState);
+        View v = inflater.inflate(R.layout.fragment_nerd_launcher, container, false);
         ButterKnife.bind(this,v);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return v;
