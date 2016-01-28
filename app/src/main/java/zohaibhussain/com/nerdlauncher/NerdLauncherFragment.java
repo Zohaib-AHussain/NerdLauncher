@@ -28,6 +28,8 @@ import butterknife.ButterKnife;
  */
 public class NerdLauncherFragment extends Fragment {
 
+    private static final  String TAG = "NerdLauncherFragment";
+
     @Bind(R.id.fragment_nerd_launcher_recycler_view)
     protected RecyclerView mRecyclerView;
 
