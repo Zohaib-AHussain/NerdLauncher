@@ -101,6 +101,8 @@ public class NerdLauncherFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ActivityHolder activityHolder, int position) {
+            ResolveInfo resolveInfo = mActivities.get(position);
+            activityHolder.bindActivity(resolveInfo);
         }
 
         @Override
