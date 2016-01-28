@@ -77,6 +77,12 @@ public class NerdLauncherFragment extends Fragment {
             mNameTextView = (TextView) itemView;
         }
 
+        public void bindActivity(ResolveInfo resolveInfo){
+            mResolveInfo = resolveInfo;
+            PackageManager pm = getActivity().getPackageManager();
+            String appName = mResolveInfo.loadLabel(pm).toString();
+            mNameTextView.setText(appName);
+        }
     }
 
 }
