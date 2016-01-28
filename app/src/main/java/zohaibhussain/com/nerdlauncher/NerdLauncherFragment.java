@@ -66,4 +66,17 @@ public class NerdLauncherFragment extends Fragment {
 
         mRecyclerView.setAdapter(new ActivityAdapter(activities));
     }
+
+    private class ActivityHolder extends RecyclerView.ViewHolder{
+
+        private ResolveInfo mResolveInfo;
+        private TextView mNameTextView;
+
+        public ActivityHolder(View itemView) {
+            super(itemView);
+            mNameTextView = (TextView) itemView;
+        }
+
+    }
+
 }
