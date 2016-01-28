@@ -43,6 +43,27 @@ public class NerdLauncherFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_nerd_launcher, container, false);
         ButterKnife.bind(this,v);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        setupAdapter();
         return v;
+    }
+
+    private void setupAdapter() {
+        Intent startUpIntent = new Intent(Intent.ACTION_MAIN);
+        startUpIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        PackageManager pm = getActivity().getPackageManager();
+        List<ResolveInfo> activities = pm.queryIntentActivities(startUpIntent, 0);
+        Collections.sort(activities, new Comparator<ResolveInfo>() {
+            @Override
+            public int compare(ResolveInfo a, ResolveInfo b) {
+                PackageManager pm = getActivity().getPackageManager();
+                return String.CASE_INSENSITIVE_ORDER.compare(
+                        a.loadLabel(pm).toString(),
+                        b.loadLabel(pm).toString()
+                );
+            }
+        });
+        Log.i(TAG, "Found " + activities.size() + " activities.");
+
+        mRecyclerView.setAdapter(new ActivityAdapter(activities));
     }
 }
