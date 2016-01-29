@@ -83,6 +83,14 @@ public class NerdLauncherFragment extends Fragment {
             String appName = mResolveInfo.loadLabel(pm).toString();
             mNameTextView.setText(appName);
         }
+
+        @Override
+        public void onClick(View view) {
+            ActivityInfo activityInfo = mResolveInfo.activityInfo;
+            Intent i = new Intent(Intent.ACTION_MAIN)
+                    .setClassName(activityInfo.applicationInfo.packageName, activityInfo.name);
+            startActivity(i);
+        }
     }
 
     private class ActivityAdapter extends RecyclerView.Adapter<ActivityHolder>{
